@@ -5,7 +5,7 @@
         <p>There are 7 total invoices </p>
     </div>
     <div class="filter">
-        <select name="filter" v-model="type" @click="()=>this.$emit('filter',type)" id="filer">
+        <select name="filter" v-model="type" id="filer">
             <option value="">All</option>
             <option value="paid">Paid</option>
             <option value="pending">Pending</option>
@@ -24,11 +24,15 @@
 <script>
 export default {
     data() {
-        console.log("a");
         return {
             type: ""
         }
-    }
+    },
+
+    updated() {
+        this.$emit('filter', this.type)
+    },
+
 }
 </script>
 

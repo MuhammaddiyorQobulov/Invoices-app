@@ -10,9 +10,10 @@ const routes = [
     component: Invoices,
   },
   {
-    path: "/invoice",
+    path: "/invoice:id",
     name: "Invoice",
     component: Invoice,
+    props: true,
   },
   {
     path: "/:catchAll(.*)",
