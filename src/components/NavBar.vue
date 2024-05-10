@@ -12,7 +12,7 @@
             <option value="draft">Draft</option>
         </select>
     </div>
-    <button class="create-btn">
+    <button @click="handleModal" class="create-btn">
         <p>
             <PlusIcon />
         </p>
@@ -20,23 +20,37 @@
             Create Invoice
         </nav>
     </button>
+
+    <div v-if="isShowModal" class="add-modal">
+        <AddInvoice :handleModal="handleModal" />
+    </div>
+
 </div>
 </template>
 
 <script>
+import AddInvoice from "@/views/AddInvoice.vue";
 import PlusIcon from "../assets/icons/plus.js";
+
 export default {
     components: {
-        PlusIcon
+        PlusIcon,
+        AddInvoice
     },
     props: ['amount'],
     data() {
         return {
-            type: ""
+            type: "",
+            isShowModal: false
         }
     },
-    updated() {
-        this.$emit('filter', this.type)
+    computed: {
+
+    },
+    methods: {
+        handleModal() {
+            this.isShowModal = !this.isShowModal
+        }
     },
 
 }
@@ -101,5 +115,13 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.add-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
 }
 </style>

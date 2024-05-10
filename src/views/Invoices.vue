@@ -36,13 +36,12 @@ export default {
         SideBar,
         NoInvoices
     },
-
     data() {
         return {
             title: "Invoices",
             type: null,
             filteredLists: undefined,
-            lists: []
+            lists: [],
         }
 
     },
@@ -58,6 +57,7 @@ export default {
             }
             this.filteredLists = this.lists.filter((item) => item.status == a)
         },
+
     },
     beforeMount() {
         console.log(datas);
