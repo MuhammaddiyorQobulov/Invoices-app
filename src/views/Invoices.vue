@@ -1,7 +1,7 @@
 <template>
 <SideBar />
 <div class="invoices">
-    <Navbar @filter='handleType' />
+    <Navbar :amount='filteredLists.length' @filter='handleType' />
     <div v-if="filteredLists.length" class=" lists">
         <div class="list" v-for="list in filteredLists" :key="list.id">
             <h2 class="value name">{{ list.id }}</h2>
@@ -14,8 +14,11 @@
             </router-link>
         </div>
     </div>
-    <div v-else>
-        Invoices didn't have
+    <div class="no-invoices" v-else>
+        <NoInvoices />
+        <h3>There is nothing here</h3>
+        <p> Create an invoice by clicking the
+            <br /> New Invoice button and get started</p>
     </div>
 </div>
 </template>
@@ -24,12 +27,14 @@
 import Navbar from '../components/NavBar.vue'
 import datas from '../store/store.js'
 import SideBar from '../components/SideBar.vue'
+import NoInvoices from "../assets/icons/no-invoices.js"
 
 export default {
     name: "InvoicesComponent",
     components: {
         Navbar,
-        SideBar
+        SideBar,
+        NoInvoices
     },
 
     data() {
@@ -148,5 +153,14 @@ export default {
 
 .btn-navigate:active {
     background: rgb(126, 136, 195);
+}
+
+.no-invoices {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 </style>

@@ -2,7 +2,7 @@
 <div class="navbar">
     <div class="titles">
         <h1>Invoices</h1>
-        <p>There are 7 total invoices </p>
+        <p>There are {{amount }} total invoices </p>
     </div>
     <div class="filter">
         <select name="filter" v-model="type" id="filer">
@@ -29,12 +29,12 @@ export default {
     components: {
         PlusIcon
     },
+    props: ['amount'],
     data() {
         return {
             type: ""
         }
     },
-
     updated() {
         this.$emit('filter', this.type)
     },

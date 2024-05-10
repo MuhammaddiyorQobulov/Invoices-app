@@ -103,7 +103,6 @@
         </div>
 
     </div>
-
 </div>
 <div v-else>
     <not-found />
@@ -139,6 +138,8 @@ export default {
 
 .back {
     cursor: pointer;
+    width: max-content;
+    padding: 10px 20px;
 }
 
 .navbar {
