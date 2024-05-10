@@ -12,17 +12,23 @@
             <option value="draft">Draft</option>
         </select>
     </div>
-    <div class="create">
-        <button class="create-btn">
-            +
+    <button class="create-btn">
+        <p>
+            <PlusIcon />
+        </p>
+        <nav class="create">
             Create Invoice
-        </button>
-    </div>
+        </nav>
+    </button>
 </div>
 </template>
 
 <script>
+import PlusIcon from "../assets/icons/plus.js";
 export default {
+    components: {
+        PlusIcon
+    },
     data() {
         return {
             type: ""
@@ -50,6 +56,16 @@ export default {
     width: 15%;
 }
 
+.titles p {
+    color: rgb(136, 142, 176);
+
+}
+
+select {
+    font-size: 20px;
+    border-radius: 10px;
+}
+
 .filter {
     width: 70%;
     height: 100%;
@@ -59,7 +75,32 @@ export default {
     padding: 0 30px;
 }
 
-.create {
-    width: 15%;
+.create-btn {
+    width: 200px;
+    padding: 5px;
+    background-color: rgba(124, 93, 250, 1);
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.create-btn:active {
+    transform: scale(.9);
+}
+
+.create-btn p {
+    width: 40px;
+    height: 40px;
+    background: white;
+    text-align: center;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

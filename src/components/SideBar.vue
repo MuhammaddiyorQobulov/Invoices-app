@@ -1,6 +1,8 @@
 <template>
 <div class="sidebar">
-    <div class="logo">Logo</div>
+    <div class="logo">
+        <LogoIcon />
+    </div>
     <div class="menu">
         <div class="mode">Mode</div>
     </div>
@@ -9,8 +11,12 @@
 </template>
 
 <script>
-export default {
+import LogoIcon from "../assets/icons/logo.js"
 
+export default {
+    components: {
+        LogoIcon
+    }
 }
 </script>
 
@@ -30,7 +36,7 @@ export default {
 }
 
 .logo {
-    width: 90px;
+    width: 82px;
     height: 90px;
     display: flex;
     justify-content: center;
@@ -45,7 +51,8 @@ export default {
     justify-content: center;
     align-items: flex-end;
 }
-.mode{
+
+.mode {
     width: 70px;
     height: 90px;
     display: flex;

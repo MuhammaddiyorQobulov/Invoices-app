@@ -1,13 +1,14 @@
 <template>
+<SideBar />
 <div class="invoices">
     <Navbar @filter='handleType' />
     <div v-if="filteredLists.length" class=" lists">
         <div class="list" v-for="list in filteredLists" :key="list.id">
-            <h1 class="value name">{{ list.id }}</h1>
+            <h2 class="value name">{{ list.id }}</h2>
             <p class="value date">{{ list.createdAt }}</p>
             <p class="value description"> {{ list.description }}</p>
-            <h1 class="value total">{{ list.total }}</h1>
-            <nav class="value status">{{ list.status }}</nav>
+            <h2 class="value total">{{ list.total }}</h2>
+            <nav class="value status" :class="list.status">{{ list.status.toUpperCase() }}</nav>
             <router-link :to="{name:'Invoice', params:{id:`${list.id}`} }">
                 <button class="btn-navigate">></button>
             </router-link>
@@ -22,10 +23,13 @@
 <script>
 import Navbar from '../components/NavBar.vue'
 import datas from '../store/store.js'
+import SideBar from '../components/SideBar.vue'
+
 export default {
     name: "InvoicesComponent",
     components: {
-        Navbar
+        Navbar,
+        SideBar
     },
 
     data() {
@@ -89,12 +93,43 @@ export default {
     align-items: center;
 }
 
+.list p {
+    color: rgb(136, 142, 176);
+}
+
 .value {
     width: 200px;
 }
 
 .list:hover {
     background-color: rgb(227, 230, 245);
+}
+
+.status {
+    height: 40px;
+    text-align: center;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.paid {
+    background-color: rgba(51, 214, 160, 0.191);
+    color: rgba(51, 214, 159, 1);
+}
+
+.pending {
+    background-color: rgba(255, 145, 0, 0.326);
+    color: rgba(255, 143, 0, 1);
+
+}
+
+.draft {
+    background-color: rgba(219, 219, 219, 0.645);
+    color: black;
 }
 
 .btn-navigate {
