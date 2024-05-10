@@ -13,8 +13,9 @@
         </div>
         <div class="options">
             <button type="button" class="option edit">Edit</button>
-            <button type="button" class="option delete">Delete</button>
-            <button type="button" class="option mark">Mark as Paid</button>
+            <button type="button" @click="handleDelete" class="option delete">Delete</button>
+            <button v-if="invoice.status!='paid'" type="button" @click="handleMark" class="option mark">Mark as Paid</button>
+            <button v-if="invoice.status!='pending'" type="button" @click="handleMark" class="option mark">Mark as Pending</button>
         </div>
     </div>
     <div class="description">
@@ -120,6 +121,13 @@ export default {
         return {
             invoice: null
         }
+    },
+    methods: {
+        handleMark() {
+            this.invoice.status = this.invoice.status == "paid" ? "pending" : "paid"
+            console.log("deleted => ", this.invoice);
+        },
+        handleDelete() {}
     },
     mounted() {
         this.invoice = datas.filter((item) => item.id == this.id)[0];
