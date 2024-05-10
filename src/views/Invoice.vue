@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="options">
-            <button type="button" class="option edit">Edit</button>
+            <button type="button" @click="handleEdit" class="option edit">Edit</button>
             <button type="button" @click="handleDelete" class="option delete">Delete</button>
             <button type="button" @click="handleModal" class="option mark">Mark as ...</button>
         </div>
@@ -117,6 +117,7 @@
 <script>
 import datas from "../store/store.js"
 import NotFound from './NotFound.vue';
+
 export default {
     components: {
         NotFound
@@ -130,6 +131,7 @@ export default {
         }
     },
     methods: {
+        handleEdit() {},
         handleMark(status) {
             this.invoice.status = status
             this.modal = false
@@ -137,7 +139,10 @@ export default {
         handleModal() {
             this.modal = true
         },
-        handleDelete() {}
+        handleDelete() {
+            datas.splice(datas.findIndex(x => x.id === this.invoice.id), 1)
+            this.$router.go(-1)
+        }
     },
     mounted() {
         this.invoice = datas.filter((item) => item.id == this.id)[0];
