@@ -3,7 +3,15 @@
   padding: 0;
   font-family: sans-serif;
 }
-body{
-    padding: 0px;
-    height: 100%;
+body {
+  padding: 0px;
+  height: 100%;
+}
+
+:root {
+  --primary: rgb(248, 248, 251);
+  --primary-black: rgb(37, 41, 69);
+  --violet: rgb(124, 93, 250);
+  --title: rgb(136, 142, 176);
+  --white: white;
 }

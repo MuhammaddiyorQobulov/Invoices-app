@@ -91,15 +91,16 @@ export default {
     border-radius: 10px;
     height: max-content;
     padding: 20px;
-    background-color: white;
+    background-color: var(--white);
     transition: .2s;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid transparent;
 }
 
 .list p {
-    color: rgb(136, 142, 176);
+    color: var(--title);
 }
 
 .value {
@@ -107,7 +108,7 @@ export default {
 }
 
 .list:hover {
-    background-color: rgb(227, 230, 245);
+    border: 1px solid rgb(227, 230, 245);
 }
 
 .status {
@@ -141,9 +142,9 @@ export default {
     width: 50px;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid rgb(124, 93, 250);
+    border: 1px solid var(--violet);
     cursor: pointer;
-    color: rgb(124, 93, 250);
+    color: var(--violet);
     background: transparent;
 }
 

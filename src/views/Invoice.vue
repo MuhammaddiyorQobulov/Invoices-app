@@ -72,32 +72,30 @@
                                 <p>Total</p>
                             </th>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody v-if="invoice.items">
+                            <tr v-for="itm in invoice.items" :key="itm.name">
                                 <td>
-                                    <h3>Banner Design</h3>
+                                    <h3>{{ itm.name }}</h3>
                                 </td>
                                 <td>
+                                    {{itm.quantity }}
                                 </td>
                                 <td>
+                                    {{itm.price }}
                                 </td>
                                 <td>
+                                    {{itm.total }}
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3>Email Design</h3>
-                                </td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+
                             </tr>
                         </tbody>
+                        <div class="no-items" v-else>No Items</div>
                     </table>
                 </div>
                 <div class="amount-due">
                     <h3>Amount Due</h3>
-                    <h1>{{ invoice.total }}</h1>
+                    <h1 v-if="invoice.items">{{invoice.total }}</h1>
+                    <h1 v-else>-</h1>
                 </div>
             </div>
         </div>
@@ -123,7 +121,7 @@ export default {
             invoice: null
         }
     },
-    beforeMount() {
+    mounted() {
         this.invoice = datas.filter((item) => item.id == this.id)[0];
     }
 }
@@ -133,7 +131,7 @@ export default {
 .invoice {
     width: 100%;
     padding: 50px;
-    background: rgb(248, 248, 251);
+    background: var(--primary);
 }
 
 .back {
@@ -149,7 +147,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -162,7 +160,7 @@ export default {
 }
 
 .status-title {
-    color: rgb(136, 142, 176);
+    color: var(--title);
 }
 
 .status {
@@ -216,19 +214,19 @@ export default {
 
 .delete {
     background: rgba(236, 87, 87, 1);
-    color: white;
+    color: var(--white);
 }
 
 .mark {
     background: rgba(124, 93, 250, 1);
-    color: white;
+    color: var(--white);
 }
 
 .description {
     width: calc(100% - 100px);
     height: max-content;
     padding: 50px;
-    background: white;
+    background: var(--white);
     margin-top: 40px;
     border-radius: 10px;
     display: flex;
@@ -238,7 +236,7 @@ export default {
 }
 
 .description p {
-    color: rgb(136, 142, 176);
+    color: var(--title);
 }
 
 .titles {
@@ -263,7 +261,7 @@ export default {
 .client .table {
     width: 100%;
     padding: 30px;
-    background: rgb(248, 248, 251);
+    background: var(--primary);
     border-radius: 10px;
 }
 
@@ -279,7 +277,7 @@ export default {
 
 .client .amount-due {
     width: calc(100% - 60px);
-    background: rgba(55, 59, 83, 1);
+    background: rgba(12, 14, 22, 1);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -289,5 +287,11 @@ export default {
 
 .client .table table th {
     text-align: start;
+}
+
+.no-items {
+    font-size: 30px;
+    color: red;
+    text-align: end;
 }
 </style>

@@ -57,8 +57,7 @@ export default {
 }
 
 .titles p {
-    color: rgb(136, 142, 176);
-
+    color: var(--title);
 }
 
 select {
@@ -78,13 +77,13 @@ select {
 .create-btn {
     width: 200px;
     padding: 5px;
-    background-color: rgba(124, 93, 250, 1);
+    background-color: var(--violet);
     border-radius: 50px;
     border: none;
     display: flex;
     gap: 20px;
     align-items: center;
-    color: white;
+    color: var(--white);
     font-size: 15px;
     cursor: pointer;
 }
@@ -96,7 +95,7 @@ select {
 .create-btn p {
     width: 40px;
     height: 40px;
-    background: white;
+    background: var(--white);
     text-align: center;
     border-radius: 100%;
     display: flex;

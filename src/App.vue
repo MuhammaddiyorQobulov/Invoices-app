@@ -6,17 +6,17 @@
 
 <script>
 export default {
-    components: {
-
-    },
+    components: {},
 }
 </script>
 
 <style>
 .app {
     display: flex;
-    background: rgb(248, 248, 251);
+    background: var(--primary);
     height: 100%;
     width: 100%;
+    color: var(--blue);
+    transition: .3s;
 }
 </style>
