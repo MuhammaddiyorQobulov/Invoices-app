@@ -65,6 +65,7 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: var(--violet);
+    border-radius: 0 25px 25px 0;
 }
 
 .menu {
