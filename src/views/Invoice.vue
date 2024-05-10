@@ -10,12 +10,18 @@
         <div class="status-bar">
             <p class="status-title">Status</p>
             <nav class="status" :class="invoice.status">{{ invoice.status.toUpperCase() }}</nav>
+            <div class="modal" v-if="modal">
+                <div class="btns">
+                    <button @click="handleMark('paid')" class="status paid">PAID</button>
+                    <button @click="handleMark('pending')" class="status pending">PENDING</button>
+                    <button @click="handleMark('draft')" class="status draft">DRAFT</button>
+                </div>
+            </div>
         </div>
         <div class="options">
             <button type="button" class="option edit">Edit</button>
             <button type="button" @click="handleDelete" class="option delete">Delete</button>
-            <button v-if="invoice.status!='paid'" type="button" @click="handleMark" class="option mark">Mark as Paid</button>
-            <button v-if="invoice.status!='pending'" type="button" @click="handleMark" class="option mark">Mark as Pending</button>
+            <button type="button" @click="handleModal" class="option mark">Mark as ...</button>
         </div>
     </div>
     <div class="description">
@@ -119,13 +125,17 @@ export default {
     props: ["id"],
     data() {
         return {
-            invoice: null
+            invoice: null,
+            modal: false
         }
     },
     methods: {
-        handleMark() {
-            this.invoice.status = this.invoice.status == "paid" ? "pending" : "paid"
-            console.log("deleted => ", this.invoice);
+        handleMark(status) {
+            this.invoice.status = status
+            this.modal = false
+        },
+        handleModal() {
+            this.modal = true
         },
         handleDelete() {}
     },
@@ -167,6 +177,32 @@ export default {
     gap: 20px;
 }
 
+.modal {
+    top: 0;
+    left: 0;
+    position: absolute;
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btns {
+    background: var(--title);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.btns .status:active {
+    transform: scale(.9);
+}
+
 .status-title {
     color: var(--title);
 }
@@ -180,6 +216,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    border: none;
 }
 
 .paid {
