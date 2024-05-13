@@ -59,6 +59,21 @@ export const useInvoicesStore = defineStore("invocesStore", {
     toggleStatusModal() {
       this.statusModal = true;
     },
+    async getInitialMode() {
+      const res = await fetch("http://localhost:3000/current-mode/mode-id");
+
+      this.currentMode = (await res.json()).value;
+
+      document.documentElement.style.setProperty(
+        "--primary",
+        this.currentMode ? "rgba(30, 33, 57, 1)" : "rgb(248, 248, 251)"
+      );
+      document.documentElement.style.setProperty(
+        "--white",
+        this.currentMode ? "var(--primary-black)" : "white"
+      );
+      document.body.style.color = this.currentMode ? "white" : "black";
+    },
 
     async toggleMode() {
       const res = await fetch("http://localhost:3000/current-mode/mode-id", {
@@ -78,7 +93,6 @@ export const useInvoicesStore = defineStore("invocesStore", {
         this.currentMode ? "var(--primary-black)" : "white"
       );
       document.body.style.color = this.currentMode ? "white" : "black";
-      console.log(this.currentMode);
     },
   },
 });
