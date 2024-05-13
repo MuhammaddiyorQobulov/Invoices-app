@@ -1,12 +1,16 @@
 <template>
 <div class="app">
+    <side-bar />
     <router-view />
 </div>
 </template>
 
 <script>
+import SideBar from './components/SideBar.vue'
 export default {
-    components: {},
+    components: {
+        SideBar
+    },
 }
 </script>
 
@@ -17,6 +21,6 @@ export default {
     height: 100%;
     width: 100%;
     color: var(--blue);
-    transition: .3s;
+    transition: .2s;
 }
 </style>

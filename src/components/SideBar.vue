@@ -26,7 +26,7 @@ import {
 export default {
     setup() {
         const invoicesStore = useInvoicesStore()
-        invoicesStore.toggleMode()
+        invoicesStore.getInitialMode()
         return {
             invoicesStore
         }

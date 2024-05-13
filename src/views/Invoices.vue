@@ -1,5 +1,4 @@
 <template>
-<SideBar />
 <div class="invoices">
     <Navbar :amount='invoicesStore.datas.length' />
     <div v-if="invoicesStore.datas.length" class="lists">
@@ -25,7 +24,6 @@
 
 <script>
 import Navbar from '../components/NavBar.vue'
-import SideBar from '../components/SideBar.vue'
 import NoInvoices from "../assets/icons/no-invoices.js"
 import {
     useInvoicesStore
@@ -36,7 +34,6 @@ export default {
     name: "InvoicesComponent",
     components: {
         Navbar,
-        SideBar,
         NoInvoices
     },
     data() {
@@ -60,6 +57,7 @@ export default {
     width: 100%;
     height: calc(100vh - 100px);
     padding: 0 30px;
+    
 }
 
 .lists {

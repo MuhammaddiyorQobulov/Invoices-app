@@ -142,7 +142,8 @@ export default {
 .invoice {
     width: 100%;
     padding: 50px;
-    background: var(--primary);
+    transition: .2s;
+
 }
 
 .back {
