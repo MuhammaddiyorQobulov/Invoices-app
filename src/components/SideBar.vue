@@ -4,10 +4,10 @@
         <LogoIcon />
     </div>
     <div class="menu">
-        <div v-if="currentMode " class="mode" @click="handleMode">
+        <div v-if="!invoicesStore.currentMode " class="mode" @click="invoicesStore.toggleMode">
             <ModeIcon />
         </div>
-        <div v-else class="mode" @click="handleMode">
+        <div v-else class="mode" @click="invoicesStore.toggleMode">
             <SunIcon />
         </div>
     </div>
@@ -19,11 +19,16 @@
 import LogoIcon from "../assets/icons/logo.js"
 import ModeIcon from "../assets/icons/mode.js"
 import SunIcon from "../assets/icons/sun.js"
+import {
+    useInvoicesStore
+} from "@/store/store"
 
 export default {
-    data() {
+    setup() {
+        const invoicesStore = useInvoicesStore()
+
         return {
-            currentMode: true
+            invoicesStore
         }
     },
     components: {
@@ -32,15 +37,9 @@ export default {
         SunIcon
     },
     methods: {
-        handleMode() {
-            document.documentElement.style.setProperty('--primary', this.currentMode ? "rgba(30, 33, 57, 1)" : 'rgb(248, 248, 251)')
-            document.documentElement.style.setProperty('--white', this.currentMode ? "var(--primary-black)" : 'white')
-            document.body.style.color = this.currentMode ? "white" : "black"
-            this.currentMode = !this.currentMode
-        }
+
     }
 }
-
 </script>
 
 <style>

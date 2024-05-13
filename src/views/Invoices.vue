@@ -1,7 +1,7 @@
 <template>
 <SideBar />
 <div class="invoices">
-    <Navbar :amount='invoicesStore.datas.length' @filter='invoicesStore.handleType' />
+    <Navbar :amount='invoicesStore.datas.length' />
     <div v-if="invoicesStore.datas.length" class="lists">
         <div class="list" v-for="list in invoicesStore.datas" :key="list.id">
             <h2 class="value name">{{ list.id }}</h2>
@@ -32,14 +32,7 @@ import {
 } from '../store/store.js'
 
 export default {
-    setup() {
-        const invoicesStore = useInvoicesStore()
 
-        invoicesStore.getInvoices()
-        return {
-            invoicesStore
-        }
-    },
     name: "InvoicesComponent",
     components: {
         Navbar,
@@ -50,10 +43,13 @@ export default {
         return {
             type: null,
         }
-
     },
-    methods: {
-
+    setup() {
+        const invoicesStore = useInvoicesStore()
+        invoicesStore.getInvoices()
+        return {
+            invoicesStore
+        }
     },
 
 }

@@ -10,18 +10,18 @@
         <div class="status-bar">
             <p class="status-title">Status</p>
             <nav class="status" :class="invoicesStore.single.status">{{ invoicesStore.single.status.toUpperCase() }}</nav>
-            <div class="modal" v-if="modal">
+            <div class="modal" v-if="invoicesStore.statusModal">
                 <div class="btns">
-                    <button @click="handleMark('paid')" class="status paid">PAID</button>
-                    <button @click="handleMark('pending')" class="status pending">PENDING</button>
-                    <button @click="handleMark('draft')" class="status draft">DRAFT</button>
+                    <button @click="invoicesStore.handleMark(invoicesStore.single.id,'paid')" class="status paid">PAID</button>
+                    <button @click="invoicesStore.handleMark(invoicesStore.single.id,'pending')" class="status pending">PENDING</button>
+                    <button @click="invoicesStore.handleMark(invoicesStore.single.id,'draft')" class="status draft">DRAFT</button>
                 </div>
             </div>
         </div>
         <div class="options">
             <button type="button" @click="handleEdit" class="option edit">Edit</button>
-            <button type="button" @click="handleDelete" class="option delete">Delete</button>
-            <button type="button" @click="handleModal" class="option mark">Mark as ...</button>
+            <button type="button" @click="invoicesStore.handleDelete(invoicesStore.single.id)" class="option delete">Delete</button>
+            <button type="button" @click="invoicesStore.toggleStatusModal()" class="option mark">Mark as ...</button>
         </div>
     </div>
     <div class="description">
@@ -126,29 +126,9 @@ export default {
     components: {
         NotFound
     },
-    data() {
-        return {
-            modal: false
-        }
-    },
-    methods: {
-        handleEdit() {},
-        handleMark(status) {
-            this.invoice.status = status
-            this.modal = false
-        },
-        handleModal() {
-            this.modal = true
-        },
-        handleDelete() {
-            this.invoicesStore.datas.splice(this.invoicesStore.datas.findIndex(x => x.id === this.invoice.id), 1)
-            this.$router.go(-1)
-        }
-    },
     setup() {
         const invoicesStore = useInvoicesStore();
         invoicesStore.getSingleInvoice()
-        invoicesStore.single
 
         return {
             invoicesStore

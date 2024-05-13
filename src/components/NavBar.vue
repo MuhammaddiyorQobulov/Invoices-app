@@ -5,7 +5,7 @@
         <p>There are {{amount }} total invoices </p>
     </div>
     <div class="filter">
-        <select name="filter" @change.prevent="invoicesStore.handleType(this.type)" v-model="this.type" id="filer">
+        <select name="filter" @change="invoicesStore.handleType(this.type)" v-model="this.type" id="filer">
             <option value="">All</option>
             <option value="paid">Paid</option>
             <option value="pending">Pending</option>
