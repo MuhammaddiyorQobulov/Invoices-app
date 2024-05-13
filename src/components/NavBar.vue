@@ -44,8 +44,8 @@ export default {
             isShowModal: false
         }
     },
-    computed: {
-
+    updated() {
+        this.$emit('filter', this.type)
     },
     methods: {
         handleModal() {
