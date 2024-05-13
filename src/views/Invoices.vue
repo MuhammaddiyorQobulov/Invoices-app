@@ -1,9 +1,9 @@
 <template>
 <SideBar />
 <div class="invoices">
-    <Navbar :amount='filteredLists.length' @filter='handleType' />
-    <div v-if="filteredLists.length" class=" lists">
-        <div class="list" v-for="list in filteredLists" :key="list.id">
+    <Navbar :amount='invoicesStore.datas.length' @filter='invoicesStore.handleType' />
+    <div v-if="invoicesStore.datas.length" class="lists">
+        <div class="list" v-for="list in invoicesStore.datas" :key="list.id">
             <h2 class="value name">{{ list.id }}</h2>
             <p class="value date">{{ list.createdAt }}</p>
             <p class="value description"> {{ list.description }}</p>
@@ -25,11 +25,21 @@
 
 <script>
 import Navbar from '../components/NavBar.vue'
-import datas from '../store/store.js'
 import SideBar from '../components/SideBar.vue'
 import NoInvoices from "../assets/icons/no-invoices.js"
+import {
+    useInvoicesStore
+} from '../store/store.js'
 
 export default {
+    setup() {
+        const invoicesStore = useInvoicesStore()
+
+        invoicesStore.getInvoices()
+        return {
+            invoicesStore
+        }
+    },
     name: "InvoicesComponent",
     components: {
         Navbar,
@@ -38,31 +48,12 @@ export default {
     },
     data() {
         return {
-            title: "Invoices",
             type: null,
-            filteredLists: undefined,
-            lists: [],
         }
 
     },
     methods: {
-        handleType(tp) {
-            this.filterLists(tp)
-            this.type = tp
-        },
-        filterLists(a) {
-            if (a == "") {
-                this.filteredLists = this.lists;
-                return
-            }
-            this.filteredLists = this.lists.filter((item) => item.status == a)
-        },
 
-    },
-    beforeMount() {
-        console.log(datas);
-        this.lists = datas
-        this.filteredLists = datas
     },
 
 }

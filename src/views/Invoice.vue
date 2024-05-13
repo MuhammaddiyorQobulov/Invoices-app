@@ -1,5 +1,5 @@
 <template>
-<div class="invoice" v-if="invoice">
+<div class="invoice" v-if="invoicesStore.single">
     <div class="back" @click="$router.go(-1)">
         <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.3418 0.886047L0.113895 5.11395L4.3418 9.34185" stroke="#7C5DFA" stroke-width="2" />
@@ -9,7 +9,7 @@
     <div class="navbar">
         <div class="status-bar">
             <p class="status-title">Status</p>
-            <nav class="status" :class="invoice.status">{{ invoice.status.toUpperCase() }}</nav>
+            <nav class="status" :class="invoicesStore.single.status">{{ invoicesStore.single.status.toUpperCase() }}</nav>
             <div class="modal" v-if="modal">
                 <div class="btns">
                     <button @click="handleMark('paid')" class="status paid">PAID</button>
@@ -27,39 +27,39 @@
     <div class="description">
         <div class="titles">
             <div class="inv-id">
-                <h2>#{{ invoice.id }}</h2>
-                <p>{{ invoice.description }}</p>
+                <h2>#{{ invoicesStore.single.id }}</h2>
+                <p>{{ invoicesStore.single.description }}</p>
             </div>
             <div class="sender-address">
-                <p>{{ invoice.senderAddress.street }}</p>
-                <p>{{ invoice.senderAddress.city }}</p>
-                <p>{{ invoice.senderAddress.postCode }}</p>
-                <p>{{ invoice.senderAddress.country }}</p>
+                <p>{{ invoicesStore.single.senderAddress.street }}</p>
+                <p>{{ invoicesStore.single.senderAddress.city }}</p>
+                <p>{{ invoicesStore.single.senderAddress.postCode }}</p>
+                <p>{{ invoicesStore.single.senderAddress.country }}</p>
             </div>
         </div>
         <div class="client">
             <ul>
                 <li>
-                    <p>Invoice Date</p>
-                    <h3>{{ invoice.createdAt }}</h3>
+                    <p>invoicesStore.single Date</p>
+                    <h3>{{ invoicesStore.single.createdAt }}</h3>
                 </li>
                 <li>
                     <p>Bill to</p>
-                    <h3>{{ invoice.clientName }}</h3>
+                    <h3>{{ invoicesStore.single.clientName }}</h3>
                 </li>
                 <li>
                     <p>Sent To</p>
-                    <h3>{{ invoice.clientEmail }}</h3>
+                    <h3>{{ invoicesStore.single.clientEmail }}</h3>
                 </li>
                 <li>
                     <p>Payment Due</p>
-                    <h3>{{ invoice.paymentDue }}</h3>
+                    <h3>{{ invoicesStore.single.paymentDue }}</h3>
                 </li>
                 <li>
-                    <p>{{ invoice.clientAddress.street }}</p>
-                    <p>{{ invoice.clientAddress.city }}</p>
-                    <p>{{ invoice.clientAddress.postCode }}</p>
-                    <p>{{ invoice.clientAddress.country }}</p>
+                    <p>{{ invoicesStore.single.clientAddress.street }}</p>
+                    <p>{{ invoicesStore.single.clientAddress.city }}</p>
+                    <p>{{ invoicesStore.single.clientAddress.postCode }}</p>
+                    <p>{{ invoicesStore.single.clientAddress.country }}</p>
                 </li>
             </ul>
             <div class="item">
@@ -79,8 +79,8 @@
                                 <p>Total</p>
                             </th>
                         </thead>
-                        <tbody v-if="invoice.items">
-                            <tr v-for="itm in invoice.items" :key="itm.name">
+                        <tbody v-if="invoicesStore.single.items">
+                            <tr v-for="itm in invoicesStore.single.items" :key="itm.name">
                                 <td>
                                     <h3>{{ itm.name }}</h3>
                                 </td>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="amount-due">
                     <h3>Amount Due</h3>
-                    <h1 v-if="invoice.items">{{invoice.total }}</h1>
+                    <h1 v-if="invoicesStore.single.items">{{invoicesStore.single.total }}</h1>
                     <h1 v-else>-</h1>
                 </div>
             </div>
@@ -115,18 +115,19 @@
 </template>
 
 <script>
-import datas from "../store/store.js"
 import NotFound from './NotFound.vue';
+import {
+    useInvoicesStore
+} from '@/store/store';
 
 export default {
+    name: "InvoiceComponent",
+    props: ["id"],
     components: {
         NotFound
     },
-    name: "InvoiceComponent",
-    props: ["id"],
     data() {
         return {
-            invoice: null,
             modal: false
         }
     },
@@ -140,13 +141,20 @@ export default {
             this.modal = true
         },
         handleDelete() {
-            datas.splice(datas.findIndex(x => x.id === this.invoice.id), 1)
+            this.invoicesStore.datas.splice(this.invoicesStore.datas.findIndex(x => x.id === this.invoice.id), 1)
             this.$router.go(-1)
         }
     },
-    mounted() {
-        this.invoice = datas.filter((item) => item.id == this.id)[0];
-    }
+    setup() {
+        const invoicesStore = useInvoicesStore();
+        invoicesStore.getSingleInvoice()
+        invoicesStore.single
+
+        return {
+            invoicesStore
+        }
+    },
+
 }
 </script>
 

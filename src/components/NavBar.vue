@@ -5,7 +5,7 @@
         <p>There are {{amount }} total invoices </p>
     </div>
     <div class="filter">
-        <select name="filter" v-model="type" id="filer">
+        <select name="filter" @change.prevent="invoicesStore.handleType(this.type)" v-model="this.type" id="filer">
             <option value="">All</option>
             <option value="paid">Paid</option>
             <option value="pending">Pending</option>
@@ -24,15 +24,23 @@
     <div v-if="isShowModal" class="add-modal">
         <AddInvoice :handleModal="handleModal" />
     </div>
-
 </div>
 </template>
 
 <script>
 import AddInvoice from "@/views/AddInvoice.vue";
 import PlusIcon from "../assets/icons/plus.js";
-
+import {
+    useInvoicesStore
+} from "@/store/store";
 export default {
+    setup() {
+        const invoicesStore = useInvoicesStore();
+
+        return {
+            invoicesStore
+        }
+    },
     components: {
         PlusIcon,
         AddInvoice
@@ -43,9 +51,6 @@ export default {
             type: "",
             isShowModal: false
         }
-    },
-    updated() {
-        this.$emit('filter', this.type)
     },
     methods: {
         handleModal() {
