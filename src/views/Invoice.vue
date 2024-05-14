@@ -141,9 +141,10 @@ export default {
 <style scoped>
 .invoice {
     width: 100%;
+    height: calc(100vh - 100px);
     padding: 50px;
     transition: .2s;
-
+    overflow: scroll;
 }
 
 .back {

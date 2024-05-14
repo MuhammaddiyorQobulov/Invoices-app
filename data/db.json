@@ -38,37 +38,6 @@
       "total": 556
     },
     {
-      "id": "RG0314",
-      "createdAt": "2021-09-24",
-      "paymentDue": "2021-10-01",
-      "description": "Website Redesign",
-      "paymentTerms": 7,
-      "clientName": "John Morrison",
-      "clientEmail": "jm@myco.com",
-      "status": "paid",
-      "senderAddress": {
-        "street": "19 Union Terrace",
-        "city": "London",
-        "postCode": "E1 3EZ",
-        "country": "United Kingdom"
-      },
-      "clientAddress": {
-        "street": "79 Dover Road",
-        "city": "Westhall",
-        "postCode": "IP19 3PF",
-        "country": "United Kingdom"
-      },
-      "items": [
-        {
-          "name": "Website Redesign",
-          "quantity": 1,
-          "price": 14002.33,
-          "total": 14002.33
-        }
-      ],
-      "total": 14002.33
-    },
-    {
       "id": "AA1449",
       "createdAt": "2021-10-7",
       "paymentDue": "2021-10-14",
@@ -167,11 +136,228 @@
         "city": "Gotham",
         "postCode": "60457"
       }
+    },
+    {
+      "id": "25615",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Lucius Warren",
+      "clientEmail": "bytodil@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Dolores et quasi odi",
+        "city": "Eum enim voluptatem",
+        "postCode": "Eos aut est fugiat ",
+        "country": "Anim est non ipsam "
+      },
+      "clientAddress": {
+        "street": "Non quo non minus in",
+        "city": "Ipsa illum debitis",
+        "postCode": "Totam natus ea omnis",
+        "country": "Illum laboriosam q"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "25615",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Lucius Warren",
+      "clientEmail": "bytodil@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Dolores et quasi odi",
+        "city": "Eum enim voluptatem",
+        "postCode": "Eos aut est fugiat ",
+        "country": "Anim est non ipsam "
+      },
+      "clientAddress": {
+        "street": "Non quo non minus in",
+        "city": "Ipsa illum debitis",
+        "postCode": "Totam natus ea omnis",
+        "country": "Illum laboriosam q"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "25615",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Lucius Warren",
+      "clientEmail": "bytodil@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Dolores et quasi odi",
+        "city": "Eum enim voluptatem",
+        "postCode": "Eos aut est fugiat ",
+        "country": "Anim est non ipsam "
+      },
+      "clientAddress": {
+        "street": "Non quo non minus in",
+        "city": "Ipsa illum debitis",
+        "postCode": "Totam natus ea omnis",
+        "country": "Illum laboriosam q"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "25615",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Lucius Warren",
+      "clientEmail": "bytodil@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Dolores et quasi odi",
+        "city": "Eum enim voluptatem",
+        "postCode": "Eos aut est fugiat ",
+        "country": "Anim est non ipsam "
+      },
+      "clientAddress": {
+        "street": "Non quo non minus in",
+        "city": "Ipsa illum debitis",
+        "postCode": "Totam natus ea omnis",
+        "country": "Illum laboriosam q"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "65321",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Jameson Golden",
+      "clientEmail": "dymo@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Dolorem cupiditate s",
+        "city": "Esse adipisicing re",
+        "postCode": "Aut doloribus labore",
+        "country": "Labore rerum asperna"
+      },
+      "clientAddress": {
+        "street": "Magni omnis ut simil",
+        "city": "Laborum sunt qui sit",
+        "postCode": "Dolor tempora consec",
+        "country": "Dolor accusamus dolo"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "54375",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Zephania Ferrell",
+      "clientEmail": "roneqofaba@mailinator.com",
+      "status": "draft",
+      "senderAddress": {
+        "street": "Ullamco necessitatib",
+        "city": "Quisquam ea numquam ",
+        "postCode": "Duis nemo omnis dolo",
+        "country": "Doloremque corrupti"
+      },
+      "clientAddress": {
+        "street": "Enim adipisicing qui",
+        "city": "Reiciendis eaque duc",
+        "postCode": "Sint est iste paria",
+        "country": "Sapiente molestiae i"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
+    },
+    {
+      "id": "74249",
+      "createdAt": "2024-05-14",
+      "paymentDue": "2024-05-14",
+      "description": "",
+      "paymentTerms": null,
+      "clientName": "Aimee Lowery",
+      "clientEmail": "zeren@mailinator.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "Similique reiciendis",
+        "city": "Nostrum voluptatem p",
+        "postCode": "Ipsum proident com",
+        "country": "Sit vel ab suscipit"
+      },
+      "clientAddress": {
+        "street": "Blanditiis qui cupid",
+        "city": "Dolorum quam minus n",
+        "postCode": "Quis eum sed veniam",
+        "country": "Dolorem consequatur"
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": null,
+          "price": null,
+          "total": null
+        }
+      ],
+      "total": null
     }
   ],
   "current-mode": [
     {
-      "value": false,
+      "value": true,
       "id": "mode-id"
     }
   ]

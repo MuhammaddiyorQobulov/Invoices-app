@@ -21,6 +21,14 @@ export const useInvoicesStore = defineStore("invocesStore", {
 
       this.datas = mainDatas;
     },
+    async createInvoice(inv) {
+      const res = await fetch("http://localhost:3000/invoices/", {
+        method: "POST",
+        body: JSON.stringify(inv),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) console.log(res.error);
+    },
     async getSingleInvoice() {
       const route = useRoute();
       const res = await fetch(

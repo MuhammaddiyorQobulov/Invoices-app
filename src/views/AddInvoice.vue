@@ -1,7 +1,7 @@
 <template>
 <div class="add-invoice">
     <h2>Add New Invoice</h2>
-    <form class="form" @submit.prevent='()=>{console.log(" a") }'>
+    <form class="form" @submit.prevent='handleSubmit'>
         <div class="bill-from">
             <h3 class="section-title">Bill From</h3>
             <label for="from-street">
@@ -72,21 +72,22 @@
 </template>
 
 <script>
-import datas from '@/store/store';
-
+import {
+    useInvoicesStore
+} from '@/store/store';
 export default {
     name: "AddInvoicePage",
     props: ['handleModal'],
     data() {
         return {
-            id: "RT3080",
-            createdAt: "",
-            paymentDue: "",
+            id: this.handleId(),
+            createdAt: new Date().toISOString().slice(0, 10),
+            paymentDue: new Date().toISOString().slice(0, 10),
             description: "",
             paymentTerms: null,
             clientName: "",
             clientEmail: "",
-            status: "",
+            status: "pending",
             senderAddress: {
                 street: "",
                 city: "",
@@ -111,8 +112,19 @@ export default {
     },
     methods: {
         handleSubmit() {
-            datas.push(this.$data)
+            this.invoicesStore.createInvoice(this.$data)
             this.handleModal()
+            console.log(this.$data);
+        },
+        handleId() {
+            return `${Math.floor(Math.random() * 100000)}`
+        }
+    },
+    setup() {
+        const invoicesStore = useInvoicesStore();
+
+        return {
+            invoicesStore
         }
     }
 }
