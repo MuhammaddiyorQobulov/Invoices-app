@@ -57,7 +57,6 @@ export default {
     width: 100%;
     height: calc(100vh - 100px);
     padding: 0 30px;
-    
 }
 
 .lists {
@@ -69,6 +68,9 @@ export default {
     align-items: center;
     gap: 15px;
     overflow: scroll;
+    transition: .2s;
+
+
 }
 
 .list {
@@ -105,6 +107,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+
 }
 
 .paid {

@@ -163,6 +163,8 @@ export default {
     background-color: var(--white);
     border-radius: 10px;
     margin-top: 20px;
+    transition: .2s;
+
 }
 
 .status-bar {
@@ -170,6 +172,8 @@ export default {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    transition: .2s;
+
 }
 
 .modal {
@@ -212,6 +216,7 @@ export default {
     align-items: center;
     font-weight: bold;
     border: none;
+
 }
 
 .paid {
@@ -272,6 +277,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    transition: .2s;
 
 }
 
@@ -283,12 +289,14 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .client {
     display: flex;
     flex-direction: column;
     gap: 50px;
+
 }
 
 .client ul {
@@ -302,7 +310,8 @@ export default {
     width: 100%;
     padding: 30px;
     background: var(--primary);
-    border-radius: 10px;
+    transition: .2s;
+
 }
 
 .client .table table {
