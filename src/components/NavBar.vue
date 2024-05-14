@@ -21,7 +21,7 @@
         </nav>
     </button>
 
-    <div v-if="isShowModal" class="add-modal">
+    <div v-if="isShowModal" class="add-modal" @click="handleModal">
         <AddInvoice :handleModal="handleModal" />
     </div>
 </div>
